@@ -24,6 +24,7 @@ interface DetailsProps {
 }
 
 const Details: React.FC<DetailsProps> = ({route, navigation}) => {
+  
   const isMounted = useIsMounted();
   const [loader, setLoader] = useState(true);
 
@@ -33,6 +34,7 @@ const Details: React.FC<DetailsProps> = ({route, navigation}) => {
         setLoader(false);
       }, 2000);
   }, []);
+
   return (
     <View style={DetailsScreenStyles.Container}>
       <MyStatusBar backgroundColor={COLORS.DarkBlack} />

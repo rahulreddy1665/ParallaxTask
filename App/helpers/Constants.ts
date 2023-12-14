@@ -1,5 +1,4 @@
 import { Dimensions } from "react-native";
-import { StackAnimationTypes } from "react-native-screens";
 
 export const ScreenNames = {
     HomeScreen : "Home",
@@ -11,10 +10,6 @@ export const header_shown_false = {
     headerShown:false
 }
 
-export const animationwithheader = {
-    headerShown:false,
-    animation:"fade" as StackAnimationTypes
-}
 
 export const COLORS = {
     primaryBg : "#192023",

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   ScreenNames,
-  animationwithheader,
   header_shown_false,
 } from '../helpers/Constants';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
@@ -32,7 +31,8 @@ const StackNavigation = () => {
           return [
             {
               id: `item.${image.key}.photo`,
-              animation: 'fade'
+              animation: 'fade',
+             
             },
           ];
         }}

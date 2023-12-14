@@ -4,7 +4,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { ICONSIZES } from '../helpers/Constants';
 import { GlobalStyles } from '../helpers/GlobalStyles';
 
-
 interface HeaderProps {
   color:string
 }

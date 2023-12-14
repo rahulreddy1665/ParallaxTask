@@ -20,6 +20,7 @@ const Home = ({navigation}: any) => {
   const scrollY = useRef(new Animated.Value(0)).current;
   
 
+  // For zoomin animations
   const scaleValues = images.map(() => useRef(new Animated.Value(1)).current);
 
   const onPressImage = (index: number, item: object) => {
