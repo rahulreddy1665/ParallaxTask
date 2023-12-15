@@ -13,6 +13,7 @@ import {HomeStyles} from '../helpers/GlobalStyles';
 import {images} from '../helpers/data';
 import MyStatusBar from '../components/MystatusBar';
 import {SharedElement} from 'react-navigation-shared-element';
+import ImageOverlay from '../helpers/ImageOverlay';
 
 
 const Home = ({navigation}: any) => {
@@ -27,6 +28,8 @@ const Home = ({navigation}: any) => {
     // Start the spring animation for bouncy effect
     Animated.spring(scaleValues[index], {
       toValue: 0.95,
+      friction: 5,
+      restSpeedThreshold: 100,
       useNativeDriver: true,
     }).start(() => {
       // After the animation completes, navigate to the details screen
@@ -36,6 +39,7 @@ const Home = ({navigation}: any) => {
       Animated.spring(scaleValues[index], {
         toValue: 1,
         friction: 5,
+        restSpeedThreshold: 100,
         useNativeDriver: true,
       }).start();
     });
@@ -78,48 +82,52 @@ const Home = ({navigation}: any) => {
               <TouchableWithoutFeedback
                 key={item.key}
                 onPress={() => onPressImage(index, item)}>
-               
-                  <Animated.View
+                <Animated.View
+                  style={[
+                    HomeStyles.imageView,
+                    {transform: [{scale: scaleValues[index]}]},
+                  ]}>
+                  <View
                     style={[
-                      HomeStyles.imageView,
-                      {transform: [{scale: scaleValues[index]}]},
+                      HomeStyles.imageWrapper,
+                      {marginTop: index === 0 ? 20 : 0},
                     ]}>
-                    <View
-                      style={[
-                        HomeStyles.imageWrapper,
-                        {marginTop: index === 0 ? 20 : 0},
-                      ]}>
-                      <View style={HomeStyles.imageContainer}>
-                        <SharedElement
-                          id={`item.${item.key}.photo`}
+                    <View style={HomeStyles.imageContainer}>
+                      <SharedElement
+                        id={`item.${item.key}.photo`}
+                        style={[
+                          StyleSheet.absoluteFillObject,
+                          {borderRadius: 18},
+                        ]}>
+                        <Animated.Image
+                          source={{uri: item.url}}
+                          resizeMode={'cover'}
                           style={[
-                            StyleSheet.absoluteFillObject,
-                            {borderRadius: 18},
-                          ]}>
-                          <Animated.Image
-                            source={{uri: item.url}}
-                            resizeMode={'cover'}
-                            style={[
-                              HomeStyles.image,
+                            HomeStyles.image,
 
-                              {
-                                transform: [
-                                  {
-                                    translateY,
-                                  },
-                                  // We can add scale to get zoomIn effects
-                                  // {
-                                  //   scale
-                                  // }
-                                ],
-                              },
-                            ]}
-                          />
-                        </SharedElement>
-                      </View>
+                            {
+                              transform: [
+                                {
+                                  translateY,
+                                },
+                                // We can add scale to get zoomIn effects
+                                // {
+                                //   scale
+                                // }
+                              ],
+                            },
+                          ]}
+                        />
+                      </SharedElement>
+                      <SharedElement id={`item.${item.key}.text`} style={StyleSheet.absoluteFillObject}>
+                        <ImageOverlay
+                          title={item.title}
+                          subtitle="Esclusive PlayStation"
+                        />
+                      </SharedElement>
                     </View>
-                  </Animated.View>
-              
+                  </View>
+                </Animated.View>
               </TouchableWithoutFeedback>
             );
           })}

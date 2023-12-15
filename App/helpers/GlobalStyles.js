@@ -90,6 +90,54 @@ export const HomeStyles = StyleSheet.create({
     borderRadius: 18,
     
   },
+  overlay: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 10, 
+  },
+  textContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+  titleText: {
+    color: COLORS.White,
+    fontSize: 18, 
+    fontWeight: 'bold',
+    marginBottom: 2, 
+  },
+  subtitleText: {
+    color: COLORS.White,
+    fontSize: 16,
+    marginBottom: 2, 
+  },
+  playButton: {
+    marginRight: 20,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: COLORS.Blue,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  playButtonText: {
+    color: 'black',
+    fontSize: 30,
+  },
+  platformText: {
+    color: COLORS.White,
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  rightContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 
 export const DetailsScreenStyles = StyleSheet.create({

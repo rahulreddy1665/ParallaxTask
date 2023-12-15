@@ -12,18 +12,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Header from '../components/Header';
 import MyStatusBar from '../components/MystatusBar';
 import {COLORS, ICONSIZES} from '../helpers/Constants';
-import {DetailsScreenStyles} from '../helpers/GlobalStyles';
+import {DetailsScreenStyles, HomeStyles} from '../helpers/GlobalStyles';
 import {SharedElement} from 'react-navigation-shared-element';
 import * as Animatable from 'react-native-animatable';
 import useIsMounted from '../hooks/UseIsMounted';
+import ImageOverlay from '../helpers/ImageOverlay';
 
 interface DetailsProps {
   route: any;
   navigation: any;
-
 }
 const Details: React.FC<DetailsProps> = ({route, navigation}) => {
-  
   const isMounted = useIsMounted();
   const [loader, setLoader] = useState(true);
 
@@ -72,6 +71,31 @@ const Details: React.FC<DetailsProps> = ({route, navigation}) => {
               </View>
 
               <View style={DetailsScreenStyles.preOrderButtonContainer}>
+                <SharedElement
+                  id={`item.${route.params.image.key}.text`}
+                  style={StyleSheet.absoluteFillObject}>
+                  <View
+                    style={{
+                      position: 'absolute',
+                      bottom: 135,
+                      left: 20,
+                      right: 0,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: 10,
+                    }}>
+                    <View style={HomeStyles.textContainer}>
+                      <Text style={HomeStyles.titleText}>
+                        {route.params.image.title}
+                      </Text>
+                      <Text style={HomeStyles.subtitleText}>
+                        Esclusive PlayStation
+                      </Text>
+                      <Text style={HomeStyles.platformText}>PS4</Text>
+                    </View>
+                  </View>
+                </SharedElement>
                 {loader && (
                   <ActivityIndicator
                     color={'#fff'}
@@ -92,8 +116,5 @@ const Details: React.FC<DetailsProps> = ({route, navigation}) => {
     </View>
   );
 };
-
-
-
 
 export default Details;
