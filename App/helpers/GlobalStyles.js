@@ -71,29 +71,24 @@ export const HomeStyles = StyleSheet.create({
   },
   imageWrapper: {
     borderRadius: 14,
-    borderWidth: 15,
-    borderColor: 'transparent',
-    shadowColor: '#000',
-    shadowOpacity: 0.6,
-    shadowRadius: 20,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
+    marginBottom:30,
+   
   },
   imageContainer: {
     width: ITEM_WIDTH,
     height: ITEM_HEIGHT,
-    backgroundColor: 'transparent',
+    backgroundColor: COLORS.Transparent,
     overflow: 'hidden',
     alignItems: 'center',
     borderRadius: 14,
+    
   },
   image: {
     width: ITEM_WIDTH,
     height: ITEM_HEIGHT ,
     resizeMode: 'cover',
     borderRadius: 18,
+    
   },
 });
 

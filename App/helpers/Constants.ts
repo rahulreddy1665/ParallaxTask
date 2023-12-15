@@ -17,7 +17,8 @@ export const COLORS = {
     White:"#FFFFFF",
     Black:"#5c5c5c",
     DarkBlack:"#000000",
-    buttonBg: "#1c87de"
+    buttonBg: "#1c87de",
+    Transparent:"transparent"
 }
 
 export const ICONSIZES = {

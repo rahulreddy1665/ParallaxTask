@@ -22,7 +22,6 @@ interface DetailsProps {
   navigation: any;
 
 }
-
 const Details: React.FC<DetailsProps> = ({route, navigation}) => {
   
   const isMounted = useIsMounted();

@@ -14,11 +14,11 @@ import {images} from '../helpers/data';
 import MyStatusBar from '../components/MystatusBar';
 import {SharedElement} from 'react-navigation-shared-element';
 
+
 const Home = ({navigation}: any) => {
   const {height} = Dimensions.get('screen');
   const IMAGE_SCALE_FACTOR = 1.1;
   const scrollY = useRef(new Animated.Value(0)).current;
-  
 
   // For zoomin animations
   const scaleValues = images.map(() => useRef(new Animated.Value(1)).current);
@@ -52,11 +52,12 @@ const Home = ({navigation}: any) => {
           onScroll={Animated.event(
             [{nativeEvent: {contentOffset: {y: scrollY}}}],
             {useNativeDriver: true},
-          )}>
+          )}
+          contentContainerStyle={{flexGrow: 1}}
+          style={{backgroundColor: 'transparent'}}>
           <Text style={HomeStyles.title}>GREAT GAMES</Text>
           <Text style={HomeStyles.Subtitle}>Coming Soon</Text>
           {images.map((item, index) => {
-            
             // inputRange defines the points of transition for the animation.
             const inputRange = [
               ((index - 1) * height) / 2,
@@ -77,37 +78,48 @@ const Home = ({navigation}: any) => {
               <TouchableWithoutFeedback
                 key={item.key}
                 onPress={() => onPressImage(index, item)}>
-                <Animated.View
-                  style={[
-                    HomeStyles.imageView,
-                    {transform: [{scale: scaleValues[index]}]},
-                  ]}>
-                  <View style={HomeStyles.imageWrapper}>
-                    <View style={HomeStyles.imageContainer}>
-                      <SharedElement id={`item.${item.key}.photo`} style={[StyleSheet.absoluteFillObject,{borderRadius:18}]}>
-                        <Animated.Image
-                          source={{uri: item.url}}
-                          resizeMode={'cover'}
+               
+                  <Animated.View
+                    style={[
+                      HomeStyles.imageView,
+                      {transform: [{scale: scaleValues[index]}]},
+                    ]}>
+                    <View
+                      style={[
+                        HomeStyles.imageWrapper,
+                        {marginTop: index === 0 ? 20 : 0},
+                      ]}>
+                      <View style={HomeStyles.imageContainer}>
+                        <SharedElement
+                          id={`item.${item.key}.photo`}
                           style={[
-                            HomeStyles.image,
-                            
-                            {
-                              transform: [
-                                {
-                                  translateY,
-                                },
-                                // We can add scale to get zoomIn effects
-                                // {
-                                //   scale
-                                // }
-                              ],
-                            },
-                          ]}
-                        />
-                      </SharedElement>
+                            StyleSheet.absoluteFillObject,
+                            {borderRadius: 18},
+                          ]}>
+                          <Animated.Image
+                            source={{uri: item.url}}
+                            resizeMode={'cover'}
+                            style={[
+                              HomeStyles.image,
+
+                              {
+                                transform: [
+                                  {
+                                    translateY,
+                                  },
+                                  // We can add scale to get zoomIn effects
+                                  // {
+                                  //   scale
+                                  // }
+                                ],
+                              },
+                            ]}
+                          />
+                        </SharedElement>
+                      </View>
                     </View>
-                  </View>
-                </Animated.View>
+                  </Animated.View>
+              
               </TouchableWithoutFeedback>
             );
           })}
