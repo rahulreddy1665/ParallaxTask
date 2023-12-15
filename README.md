@@ -24,7 +24,7 @@ This project was developed with the following technologies:
 ## :rocket: Getting started
 ``` bash
   # Clone the repository:
-  $ https://github.com/rahulreddy1665/pokedex
+  $ https://github.com/rahulreddy1665/ParallaxTask
 
   # Enter directory:
   $ cd ParallaxTask
